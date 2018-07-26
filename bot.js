@@ -1,10 +1,10 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
-const prefix = '1'
+const prefix = '.'
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
-client.user.setGame(`NEVER FORGET`,"http://twitch.tv/S-F")
+client.user.setGame(`Nothing`,"http://twitch.tv/S-F")
   console.log('')
   console.log('')
   console.log('╔[═════════════════════════════════════════════════════════════════]╗')
@@ -23,7 +23,6 @@ client.user.setGame(`NEVER FORGET`,"http://twitch.tv/S-F")
   console.log('')
   console.log('╔[════════════]╗')
   console.log(' Bot Is Online')
-  console.log(' By 3MK SYTRAA')
   console.log('╚[════════════]╝')
   console.log('')
   console.log('')
