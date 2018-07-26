@@ -29,4 +29,4 @@ client.user.setGame(`NEVER FORGET`,"http://twitch.tv/S-F")
   console.log('')
 });
 
-client.login(process.env.BOT_TOKE
+client.login(process.env.BOT_TOKEN);
