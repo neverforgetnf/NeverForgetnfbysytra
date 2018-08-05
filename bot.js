@@ -90,13 +90,10 @@ client.on('ready', () => {
          client.on('message', message => {
             if (message.content === '!') {
               message.channel.send('**WELCOME TO WAK CLAN :champagne_glass: ✨**');
-              message.channel.sendFile("./photoshop.PNG");
                
 
             }
 });
-
- var prefix = "*";
  
             var args = message.content.substring(prefix.length).split(" ");
             if (message.content.startsWith(prefix + "clear")) {
