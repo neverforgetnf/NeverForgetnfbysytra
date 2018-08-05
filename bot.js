@@ -367,8 +367,6 @@ client.on('messageDelete', message => {
 });
 
 
-});
-
 client.on('message', message => {   
 if (message.author.boss) return;
 var prefix = "*";
