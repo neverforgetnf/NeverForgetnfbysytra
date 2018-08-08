@@ -218,7 +218,7 @@ var unmuteembeddm = new Discord.RichEmbed()
 
 
 client.on('message', function(msg) {
-	const prefix = '+'
+	const prefix = '*'
     if(msg.content.startsWith (prefix  + 'server')) {
       let embed = new Discord.RichEmbed()
       .setColor('RANDOM')
@@ -314,7 +314,7 @@ client.on('message', message => {
 
 
 client.on('message', message => {
- if (message.content.includes('discord.gg')){      //شيل المسافه
+ if (message.content.includes('discord.gg')){
                      if(!message.channel.guild) return message.reply ('')
                  if (!message.member.hasPermissions(['MANAGE_MESSAGES'])){
     message.delete() 
