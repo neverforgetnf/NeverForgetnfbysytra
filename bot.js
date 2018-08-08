@@ -78,7 +78,6 @@ client.on('ready', () => {
          client.on('message', message => {
             if (message.content === 'سيطره') {
               message.channel.send('**اسمه عمو سيطرة -_-**');
-              message.channel.sendFile("./photoshop.PNG");
                
 
             }
@@ -89,7 +88,7 @@ client.on('ready', () => {
 });
          client.on('message', message => {
             if (message.content === '!') {
-              message.channel.send('**WELCOME TO WAK CLAN :champagne_glass: ✨**');
+              message.channel.send('**WELCOME TO KND CLAN :champagne_glass: ✨**');
                
 
             }
