@@ -4,7 +4,7 @@ const prefix = '*'
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
-	client.user.setGame(`KINGS NEVER DIE`,"http://twitch.tv/sytra_ayman")
+
   console.log('')
   console.log('')
   console.log('╔[═════════════════════════════════════════════════════════════════]╗')
@@ -78,13 +78,6 @@ client.on('voiceStateUpdate', (old, now) => {
   if (currentSize !== size) channel.setName(`Voice Online: ${currentSize}`);
 });
 
-
-client.on('guildMemberAdd', (member) => {
-let channel = client.channels.get('470512777568583691')
-if(member.user.bot) {
-channel.send(`${member} بوت جديد دخل السيرفر`)
-}
-})
 
 client.on("message", message => {
 
@@ -272,7 +265,7 @@ client.on('message', async message => {
 
 var guilds = {};
 client.on('guildBanAdd', function(guild) {
-            const rebellog = client.channels.find("name", "logs"),
+            const rebellog = client.channels.find("name", "log"),
             Onumber = 3,
   Otime = 10000
 guild.fetchAuditLogs({
@@ -310,7 +303,7 @@ console.log(error)
 });
  let channelc = {};
   client.on('channelCreate', async (channel) => {
-  const rebellog = client.channels.find("name", "logs"),
+  const rebellog = client.channels.find("name", "log"),
   Oguild = channel.guild,
   Onumber = 3,
   Otime = 10000;
@@ -337,7 +330,7 @@ channel.guild.owner.send(`<@!${channelcreate.id}>
 
 let channelr = {};
   client.on('channelDelete', async (channel) => {
-  const rebellog = client.channels.find("name", "logs"),
+  const rebellog = client.channels.find("name", "log"),
   Oguild = channel.guild,
   Onumber = 3,
   Otime = 10000;
