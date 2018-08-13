@@ -28,26 +28,20 @@ client.on('ready', () => {
   console.log('')
 });
 
-
-         client.on('message', message => {
-            if (message.content === 'السلام عليكم') {
-              message.channel.send('**ۅ عـڵـﯾ̃ڪمـ ٱڵـسڵـٱمـ ۅږحمـﮤ ٱڵـڵـھ ۅﭜږڪٱﭤھ**');
-               
-
-            }
+client.on('message', message => {
+    if (message.content === 'السلام عليكم') {
+        message.reply('**وعڵيڪم ٱڵسڵٱم ورحمهہ ٱڵڵهہ وبرڪٱتهہ**');
+      }
 });
 
-         client.on('message', message => {
-            if (message.content === 'باك') {
-              message.channel.send('**وِلِـكُمِـ ﻧَوِرُتْ اٌلِـسُيٌـرُفّرُ يٌـاٌ حٍلِـوِ**');
-               
-
-            }
+ client.on('message', message => {
+        if (message.content === 'باك') {
+        message.reply('**وش نسويلك يعني ؟؟**');
+      }
 });
-
          client.on('message', message => {
             if (message.content === 'برب') {
-              message.channel.send('**تْيٌـتْ , تْرُجِعٍ بّـاٌلِـسُلِـاٌمِـةُ**');
+               message.reply('**تْيٌـتْ , تْرُجِعٍ بّـاٌلِـسُلِـاٌمِـةُ**');
                
 
             }
@@ -55,15 +49,7 @@ client.on('ready', () => {
 
          client.on('message', message => {
             if (message.content === '.') {
-              message.channel.send('**اطﻟﻗ̮ـ̃ ﻧﻗ̮ـ̃طھَہّھَہّ**');
-               
-
-            }
-});
-
-         client.on('message', message => {
-            if (message.content === 'سيطره') {
-              message.channel.send('**اسمه عمو سيطرة -_-**');
+               message.reply('**اطﻟﻗ̮ـ̃ ﻧﻗ̮ـ̃طھَہّھَہّ**');
                
 
             }
@@ -77,36 +63,28 @@ client.on('ready', () => {
             }
 });
 
+ client.on('message', message => {
+    if (message.content === 'الشعار') {
+        message.reply('** ! ᴷᴺᴰ 㴀 | الشعار في آقاريو   || ! KND , | آلشعار في الديسكورد **');
+      }
+});
 
 
-client.on('message', message => {
-  if (message.content.startsWith(prefix + "deafen")) {
-    if (!message.member.hasPermission('DEAFEN_MEMBERS')) return;
-  { message.member.setDeaf(true);
-    }
-  }
-    });
-client.on('message', message => {
-  if (message.content.startsWith(prefix + "vmute")) {
-    if (!message.member.hasPermission('MUTE_MEMBERS')) return;
-  { message.member.setMute(true);
-    }
-  }
-    });
-client.on('message', message => {
-  if (message.content.startsWith(prefix + "undeafen")) {
-    if (!message.member.hasPermission('DEAFEN_MEMBERS')) return;
-  { message.member.setDeaf(false);
-    }
-  }
-    });
-client.on('message', message => {
-  if (message.content.startsWith(prefix + "vunmute")) {
-    if (!message.member.hasPermission('MUTE_MEMBERS')) return;
-  { message.member.setMute(false);
-    }
-  }
-    });
+client.on('voiceStateUpdate', (old, now) => {
+  const channel = client.channels.get('478453975226515456');
+  const currentSize = channel.guild.members.filter(m => m.voiceChannel).size;
+  const size = channel.name.match(/\[\s(\d+)\s\]/);
+  if (!size) return channel.setName(`Voice Online: ${currentSize}`);
+  if (currentSize !== size) channel.setName(`Voice Online: ${currentSize}`);
+});
+
+
+client.on('guildMemberAdd', (member) => {
+let channel = client.channels.get('470512777568583691')
+if(member.user.bot) {
+channel.send(`${member} بوت جديد دخل السيرفر`)
+}
+})
 
 client.on("message", message => {
 
@@ -290,6 +268,101 @@ client.on('message', async message => {
   });
   }
 });
+
+
+var guilds = {};
+client.on('guildBanAdd', function(guild) {
+            const rebellog = client.channels.find("name", "logs"),
+            Onumber = 3,
+  Otime = 10000
+guild.fetchAuditLogs({
+    type: 22
+}).then(audit => {
+    let banner = audit.entries.map(banner => banner.executor.id)
+    let bans = guilds[guild.id + banner].bans || 0 
+    guilds[guild.id + banner] = {
+        bans: 0
+    }
+      bans[guilds.id].bans += 1; 
+if(guilds[guild.id + banner].bans >= Onumber) {
+try {
+let roles = guild.members.get(banner).roles.array();
+guild.members.get(banner).removeRoles(roles);
+  guild.guild.member(banner).kick();
+
+} catch (error) {
+console.log(error)
+try {
+guild.members.get(banner).ban();
+  rebellog.send(`<@!${banner.id}>
+حآول العبث بالسيرفر @everyone`);
+guild.owner.send(`<@!${banner.id}>
+حآول العبث بالسيرفر ${guild.name}`)
+    setTimeout(() => {
+ guilds[guild.id].bans = 0;
+  },Otime)
+} catch (error) {
+console.log(error)
+}
+}
+}
+})
+});
+ let channelc = {};
+  client.on('channelCreate', async (channel) => {
+  const rebellog = client.channels.find("name", "logs"),
+  Oguild = channel.guild,
+  Onumber = 3,
+  Otime = 10000;
+  const audit = await channel.guild.fetchAuditLogs({limit: 1});
+  const channelcreate = audit.entries.first().executor;
+  console.log(` A ${channel.type} Channel called ${channel.name} was Created By ${channelcreate.tag}`);
+   if(!channelc[channelcreate.id]) {
+    channelc[channelcreate.id] = {
+    created : 0
+     }
+ }
+ channelc[channelcreate.id].created += 1;
+ if(channelc[channelcreate.id].created >= Onumber ) {
+    Oguild.members.get(channelcreate.id).kick();
+rebellog.send(`<@!${channelcreate.id}>
+حآول العبث بالسيرفر @everyone`);
+channel.guild.owner.send(`<@!${channelcreate.id}>
+حآول العبث بالسيرفر ${channel.guild.name}`)
+}
+  setTimeout(() => {
+ channelc[channelcreate.id].created = 0;
+  },Otime)
+  });
+
+let channelr = {};
+  client.on('channelDelete', async (channel) => {
+  const rebellog = client.channels.find("name", "logs"),
+  Oguild = channel.guild,
+  Onumber = 3,
+  Otime = 10000;
+  const audit = await channel.guild.fetchAuditLogs({limit: 1});
+  const channelremover = audit.entries.first().executor;
+  console.log(` A ${channel.type} Channel called ${channel.name} was deleted By ${channelremover.tag}`);
+   if(!channelr[channelremover.id]) {
+    channelr[channelremover.id] = {
+    deleted : 0
+     }
+ }
+ channelr[channelremover.id].deleted += 1;
+ if(channelr[channelremover.id].deleted >= Onumber ) {
+  Oguild.guild.member(channelremover).kick();
+rebellog.send(`<@!${channelremover.id}>
+حآول العبث بالسيرفر @everyone`);
+channel.guild.owner.send(`<@!${channelremover.id}>
+حآول العبث بالسيرفر ${channel.guild.name}`)
+}
+  setTimeout(() => {
+ channelr[channelremover.id].deleted = 0;
+  },Otime)
+  });
+
+
 
 //GAMES آلعااااااااااااااااااااااااااااااااب
 
