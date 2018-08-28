@@ -36,7 +36,7 @@ client.on('message', message => {
 
  client.on('message', message => {
         if (message.content === 'باك') {
-        message.reply('**وش نسويلك يعني ؟؟**');
+        message.reply('**ولكم يعسليةة منوور**');
       }
 });
          client.on('message', message => {
@@ -65,7 +65,7 @@ client.on('message', message => {
 
  client.on('message', message => {
     if (message.content === 'الشعار') {
-        message.reply('** ! ᴷᴺᴰ 㴀 | الشعار في آقاريو   || ! KND , | آلشعار في الديسكورد **');
+        message.reply('** ! ᴷᴺᴰ 㴀 | الشعار في آقاريو   || - KND | آلشعار في الديسكورد **');
       }
 });
 
